@@ -1,0 +1,124 @@
+* {
+  margin: 0; padding: 0; box-sizing: border-box;
+}
+body {
+  font-family: Arial, sans-serif;
+  background-color: #e6ffe6;
+}
+.topo {
+  background: linear-gradient(90deg, #16a34a, #15803d);
+  padding: 15px 60px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.container-header {
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;
+}
+.perfil { display: flex; align-items: center; gap: 15px; }
+.foto-perfil { width:70px; height:70px; border-radius:50%; border:3px solid #fff; object-fit:cover;}
+.nomes h1 { color:#fff; font-size:1.8rem;}
+.nomes p { color:#dcfce7; font-size:.9rem;}
+.menu { display:flex; gap:25px;}
+.menu a { color:#fff; text-decoration:none; font-weight:500; position:relative; transition:.3s;}
+.menu a::after { content:""; position:absolute; bottom:-5px; left:0; height:2px; width:0; background-color:#fff; transition:.3s;}
+.menu a:hover::after { width:100%; }
+.header-space { height:30px;}
+/* JOGO */
+.conteudo { max-width:600px; margin:40px auto; padding:20px;}
+.secao-jogo {
+  background:#b1f7ba;
+  border-radius:20px;
+  padding:40px;
+  box-shadow:0 4px 10px rgba(0,0,0,.08);
+}
+.secao-jogo h2 { color:#14532d; margin-bottom:10px;}
+.secao-jogo .descricao { color:#064e3b; margin-bottom:25px;}
+.pergunta { margin-bottom:25px;}
+.pergunta p { font-weight:bold; color:#14532d;}
+.pergunta label { display:block; margin-left:15px; margin-bottom:6px; cursor:pointer;}
+.btn-jogar, .btn-reiniciar {
+  background:#16a34a;
+  color:#fff;
+  border:none;
+  border-radius:8px;
+  padding:12px 28px;
+  font-size:1rem;
+  cursor:pointer;
+  margin-top:18px;
+  transition:.2s;
+}
+.btn-jogar:hover, .btn-reiniciar:hover { background:#15803d;}
+.resultado {
+  margin-top:30px;
+  background:#f2fef4;
+  border-radius:12px;
+  padding:25px;
+}
+.resultado h3 { color:#14532d;}
+.resultado ul { margin-top:10px; margin-left:18px;}
+/* Loader */
+#loader {
+  position: fixed; top:0; left:0; width:100%; height:100vh;
+  background:#f6f9f6;
+  display:flex; justify-content:center; align-items:center;
+  z-index:10000;
+  transition: opacity .8s ease, visibility .8s ease;
+}
+#loader.fadeOut { opacity:0; visibility:hidden;}
+.loader-img { width:150px; height:150px; border-radius:50%; object-fit:cover; animation:spin 1.8s linear infinite;}
+@keyframes spin { from{transform:rotate(0deg);} to{transform:rotate(360deg);} }
+/* Botão Voltar ao Topo */
+#backToTop {
+  position:fixed; bottom:30px; right:30px;
+  background:#16a34a; color:white;
+  border:none; border-radius:50%;
+  width:45px;height:45px;font-size:22px;
+  cursor:pointer; opacity:0; visibility:hidden;
+  transition:.8s, transform .3s;
+  box-shadow:0 4px 12px rgba(0,0,0,.3); z-index:9999;
+}
+#backToTop.show { opacity:1; visibility:visible;}
+#backToTop:hover { background:#15803d; transform:scale(1.1);}
+footer {
+  background:#4ade80;color:#000;text-align:center;padding:15px;margin-top:auto;font-size:.95rem;
+}
+/* ================= MODO NOTURNO ================= */
+body.dark-mode { background-color:#181a1b !important;color:#e0e0e0 !important;}
+body.dark-mode .topo { background:linear-gradient(90deg,#14532d,#052e16);}
+body.dark-mode .nomes h1,
+body.dark-mode .nomes p,
+body.dark-mode .menu a,
+body.dark-mode .menu a::after { color:#d1fae5 !important;}
+body.dark-mode .secao-jogo { background:#23272a !important;}
+body.dark-mode .secao-jogo h2,
+body.dark-mode .pergunta p { color:#4ade80 !important;}
+body.dark-mode .secao-jogo .descricao,
+body.dark-mode .pergunta label { color:#bdbdbd !important;}
+body.dark-mode .resultado { background:#181a1b !important;}
+body.dark-mode footer { background:#052e16 !important;color:#bbf7d0 !important;}
+body.dark-mode #loader { background:#181a1b !important;}
+body.dark-mode #backToTop { background:#23272a !important;color:#4ade80 !important;}
+body.dark-mode #backToTop:hover { background:#14532d !important;}
+#darkModeToggle {
+  position:fixed; top:30px; right:30px; z-index:10001;
+  background:#fff;color:#181a1b;border:none;border-radius:50%;
+  width:45px;height:45px;font-size:22px;cursor:pointer;
+  box-shadow:0 4px 12px rgba(0,0,0,.2);transition:.3s;
+}
+
+#darkModeToggle:hover { background:#181a1b;color:#fff;}
+body.dark-mode #darkModeToggle { background:#23272a;color:#fff;}
+/* Radios customizados */
+.pergunta input[type="radio"] {
+  accent-color: #16a34a; /* cor verde igual ao tema */
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  vertical-align: middle;
+  transition: accent-color .2s;
+}
+body.dark-mode .pergunta input[type="radio"] {
+  accent-color: #4ade80; /* verde claro no modo escuro */
+}
+.resultado:empty {
+  display: none;
+}

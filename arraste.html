@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Professor não vai ver isso</title>
+  <link rel="stylesheet" href="arraste.css">
+</head>
+<body>
+  <!-- Botão Modo Noturno -->
+  <button id="darkModeToggle" title="Alternar modo noturno">🌙</button>
+  <!-- Loader -->
+  <div id="loader">
+    <img src="SPADRE.jpg.png" alt="Logo SPADRE" class="loader-img">
+  </div>
+  <!-- Botão voltar ao topo -->
+  <button id="backToTop" title="Voltar ao topo">▲</button>
+  <!-- Cabeçalho -->
+  <header class="topo">
+    <div class="container-header">
+      <div class="perfil">
+        <img src="SPADRE.jpg.png" alt="Foto da equipe" class="foto-perfil">
+        <div class="nomes">
+          <h1>SPADRE</h1>
+          <p>Guilherme e Rafael</p>
+        </div>
+      </div>
+      <nav class="menu">
+        <a href="index.html">Página Inicial</a>
+        <a href="sobre.html">Sobre o Site</a>
+        <a href="projetos.html">Projetos</a>
+        <a href="turma.html">Turma</a>
+        <a href="postagens.html">Postagens</a>
+        <a href="jogos.html" class="ativo">Jogos</a>
+        <a href="feira.html">E'Sustentar</a>
+      </nav>
+    </div>
+  </header>
+  <div class="header-space"></div>
+
+  <!-- JOGO DE ARRASTE E SOLTE -->
+  <main class="arraste-main">
+    <h2>Arraste para o Lixo Correto</h2>
+    <p>Arraste cada resíduo para a lixeira correta!</p>
+    <div id="drag-game" class="drag-game">
+      <div id="cards" class="cards"></div>
+      <div class="bins-container">
+        <div class="bin" data-bin="papel">
+          <img src="papel.png" alt="Lixeira Papel"><span>Papel</span>
+        </div>
+        <div class="bin" data-bin="plastico">
+          <img src="plastico.png" alt="Lixeira Plástico"><span>Plástico</span>
+        </div>
+        <div class="bin" data-bin="vidro">
+          <img src="vidro.png" alt="Lixeira Vidro"><span>Vidro</span>
+        </div>
+        <div class="bin" data-bin="metal">
+          <img src="metal.png" alt="Lixeira Metal"><span>Metal</span>
+        </div>
+        <div class="bin" data-bin="organico">
+          <img src="organico.png" alt="Lixeira Orgânico"><span>Orgânico</span>
+        </div>
+        <div class="bin" data-bin="eletronico">
+          <img src="eletronico.png.png" alt="Lixeira Eletrônico"><span>Eletrônico</span>
+        </div>
+      </div>
+    </div>
+    <button id="finishBtn" onclick="finishGame()">Finalizar</button>
+    <div id="result"></div>
+    <button id="restartBtn" onclick="restartGame()" style="display:none;">Jogar Novamente</button>
+  </main>
+
+  <!-- Rodapé -->
+  <footer>
+    <p>© 2025 Guilherme Spada e Rafael Zambonin | Todos os direitos reservados</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="arraste.js"></script>
+  <script>
+const darkModeToggle = document.getElementById('darkModeToggle');
+let isDragging = false;
+let offsetX, offsetY;
+let moved = false;
+
+// Salva preferência no localStorage
+function setDarkMode(on) {
+  if(on) document.body.classList.add('dark-mode');
+  else document.body.classList.remove('dark-mode');
+  localStorage.setItem('darkMode', on ? 'on' : 'off');
+  darkModeToggle.innerHTML = on ? '☀️' : '🌙';
+}
+
+// Carrega preferência ao abrir a página
+(function() {
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const saved = localStorage.getItem('darkMode');
+  if(saved === 'on' || (saved === null && prefersDark)) setDarkMode(true);
+  else setDarkMode(false);
+})();
+
+// Clique e arraste
+darkModeToggle.addEventListener('mousedown', function(e) {
+  isDragging = true;
+  moved = false;
+  offsetX = e.clientX - darkModeToggle.getBoundingClientRect().left;
+  offsetY = e.clientY - darkModeToggle.getBoundingClientRect().top;
+  darkModeToggle.style.position = 'absolute';
+  darkModeToggle.style.zIndex = 9999;
+  document.body.appendChild(darkModeToggle);
+});
+
+document.addEventListener('mousemove', function(e) {
+  if (isDragging) {
+    darkModeToggle.style.left = (e.clientX - offsetX) + 'px';
+    darkModeToggle.style.top = (e.clientY - offsetY) + 'px';
+    moved = true;
+  }
+});
+
+document.addEventListener('mouseup', function(e) {
+  if (isDragging) {
+    isDragging = false;
+    // Só ativa modo noturno se NÃO houve movimento
+    if (!moved) {
+      setDarkMode(!document.body.classList.contains('dark-mode'));
+    }
+  }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,363 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* Remove espaçamentos padrão e faz com que padding e borda entrem no cálculo total do tamanho de cada elemento */
+
+
+
+
+
+
+/* Corpo */
+body {
+  font-family: 'Arial', sans-serif;
+  /* Define a fonte principal */
+  background: #e8f7e9;
+  /* Cor de fundo verde claro */
+  color: #222;
+  /* Cor do texto padrão */
+  display: flex;
+  flex-direction: column;
+  /* Organiza o corpo em coluna (header, main, footer) */
+  min-height: 100vh;
+  /* Garante que o corpo ocupe toda a altura da tela */
+}
+
+
+
+
+
+
+
+/* TOPO */
+.topo {
+  background: linear-gradient(90deg, #16a34a, #15803d);
+  padding: 15px 60px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.container-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.perfil {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.foto-perfil {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  object-fit: cover;
+}
+
+.nomes h1 {
+  color: #fff;
+  font-size: 1.8rem;
+  margin: 0;
+}
+
+.nomes p {
+  color: #dcfce7;
+  font-size: 0.9rem;
+}
+
+.menu {
+  display: flex;
+  gap: 25px;
+}
+
+.menu a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  transition: 0.3s;
+}
+
+.menu a::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background-color: #fff;
+  transition: 0.3s;
+}
+
+.menu a:hover::after {
+  width: 100%;
+}
+
+
+
+
+
+
+/* Seção de postagens */
+.postagens {
+  flex: 1;
+  /* Faz a seção ocupar o espaço livre vertical entre header e footer */
+  padding: 60px 80px;
+  /* Espaçamento interno */
+}
+.postagens h1 {
+  text-align: center;
+  /* Centraliza o título */
+  color: #14532d;
+  /* Verde escuro */
+  margin-bottom: 60px;
+  /* Espaço abaixo do título */
+  font-size: 2rem;
+  /* Tamanho do texto */
+}
+.grid-posts {
+  display: grid;
+  /* Ativa o grid layout */
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  /* Cria colunas que se ajustam automaticamente com mínimo de 340px */
+  gap: 40px;
+  /* Espaço entre os cards */
+}
+/* Card de postagem */
+.post {
+  background: #fff;
+  /* Fundo branco */
+  border-radius: 20px;
+  /* Bordas arredondadas */
+  overflow: hidden;
+  /* Esconde conteúdo que ultrapasse as bordas */
+  box-shadow: 0 8px 18px rgba(0,0,0,0.1);
+  /* Sombra suave */
+  max-height: 350px;
+  /* Altura inicial dos cards (fechados) */
+  transition: all 0.6s ease;
+  /* Transição suave de animações */
+  cursor: pointer;
+  /* Mostra ícone de clique */
+}
+.post:hover {
+  transform: scale(1.03);
+  /* Aumenta levemente o tamanho no hover */
+  max-height: 1000px;
+  /* Expande o card ao passar o mouse */
+}
+.post img {
+  width: 100%;
+  /* Faz a imagem ocupar toda a largura do card */
+  height: 220px;
+  /* Altura fixa */
+  object-fit: cover;
+  /* Ajusta a imagem para cobrir o espaço sem distorcer */
+}
+.post .conteudo {
+  padding: 25px;
+  /* Espaço interno do texto */
+  line-height: 1.6;
+  /* Altura entre linhas */
+  color: #333;
+  /* Cor do texto */
+}
+.post .conteudo h2 {
+  font-size: 1.3rem;
+  color: #166534;
+  margin-bottom: 10px;
+  /* Título do post com espaçamento inferior */
+}
+.post .conteudo p {
+  margin-bottom: 10px;
+  /* Espaço entre parágrafos */
+}
+.post .conteudo ul,
+.post .conteudo ol {
+  margin-left: 20px;
+  /* Indenta listas para dentro */
+}
+
+
+
+
+
+/* Rodapé fixo */
+footer {
+  background: #4ade80;
+  /* Fundo verde claro */
+  color: #000;
+  /* Texto preto */
+  text-align: center;
+  /* Centraliza o texto */
+  padding: 15px 0;
+  /* Espaço interno vertical */
+  margin-top: auto;
+  /* Faz o rodapé “grudar” no fim da tela */
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  /* Faz o rodapé ocupar toda a largura */
+}
+/* =======================================================
+   LOADER E BOTÃO VOLTAR AO TOPO - VERSÃO CORRIGIDA
+   ======================================================= */
+
+/* Loader */
+#loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: #f6f9f6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000; /* acima de tudo, mas some após fade */
+  transition: opacity 3.0s ease, visibility 3.0s ease;
+}
+
+#loader.fadeOut {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loader-img { 
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  animation: spin 1.8s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Botão Voltar ao Topo */
+#backToTop {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #16a34a;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 22px;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1.0s ease, transform 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 9999; /* garante que o botão fica acima de tudo */
+}
+
+#backToTop.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+#backToTop:hover {
+  background: #15803d;
+  transform: scale(1.1);
+}
+/* =========================== MODO NOTURNO =========================== */
+body.dark-mode {
+  background: #181a1b !important;
+  color: #e0e0e0 !important;
+}
+
+/* Cabeçalho */
+body.dark-mode .topo {
+  background: linear-gradient(90deg, #14532d, #052e16);
+}
+body.dark-mode .nomes h1,
+body.dark-mode .nomes p {
+  color: #d1fae5 !important;
+}
+body.dark-mode .menu a {
+  color: #d1fae5 !important;
+}
+body.dark-mode .menu a::after {
+  background-color: #d1fae5 !important;
+}
+
+/* Seção de postagens */
+body.dark-mode .postagens {
+  /* Mantém o fundo escuro geral */
+}
+body.dark-mode .postagens h1 {
+  color: #4ade80 !important;
+}
+
+/* Cards de postagem */
+body.dark-mode .post {
+  background: #23272a !important;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.3);
+}
+body.dark-mode .post .conteudo {
+  color: #e0e0e0 !important;
+}
+body.dark-mode .post .conteudo h2 {
+  color: #4ade80 !important;
+}
+body.dark-mode .post img {
+  filter: brightness(0.85) contrast(1.05);
+}
+
+/* Rodapé */
+body.dark-mode footer {
+  background: #052e16 !important;
+  color: #bbf7d0 !important;
+}
+
+/* Loader */
+body.dark-mode #loader {
+  background: #181a1b !important;
+}
+
+/* Botão Voltar ao Topo */
+body.dark-mode #backToTop {
+  background: #23272a !important;
+  color: #4ade80 !important;
+}
+body.dark-mode #backToTop:hover {
+  background: #14532d !important;
+}
+
+/* Botão modo noturno */
+#darkModeToggle {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  z-index: 10001;
+  background: #fff;
+  color: #181a1b;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 22px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: background-color .3s, color .3s, transform .2s;
+}
+#darkModeToggle:hover {
+  background: #181a1b;
+  color: #fff;
+}
+body.dark-mode #darkModeToggle {
+  background: #23272a;
+  color: #fff;
+}

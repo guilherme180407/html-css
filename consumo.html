@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Professor não vai ver isso</title>
+  <link rel="stylesheet" href="consumo.css">
+</head>
+<body>
+  <!-- Botão Modo Noturno -->
+  <button id="darkModeToggle" title="Alternar modo noturno">🌙</button>
+  <!-- Loader -->
+  <div id="loader">
+    <img src="SPADRE.jpg.png" alt="Logo SPADRE" class="loader-img">
+  </div>
+  <!-- Botão voltar ao topo -->
+  <button id="backToTop" title="Voltar ao topo">▲</button>
+
+  <!-- Cabeçalho -->
+  <header class="topo">
+    <div class="container-header">
+      <div class="perfil">
+        <img src="SPADRE.jpg.png" alt="Foto da equipe" class="foto-perfil">
+        <div class="nomes">
+          <h1>SPADRE</h1>
+          <p>Guilherme e Rafael</p>
+        </div>
+      </div>
+      <nav class="menu">
+        <a href="index.html">Página Inicial</a>
+        <a href="sobre.html">Sobre o Site</a>
+        <a href="projetos.html">Projetos</a>
+        <a href="turma.html">Turma</a>
+        <a href="postagens.html">Postagens</a>
+        <a href="jogos.html" class="ativo">Jogos</a>
+        <a href="feira.html">E'Sustentar</a>
+      </nav>
+    </div>
+  </header>
+  <div class="header-space"></div>
+
+  <!-- JOGO -->
+  <main class="conteudo">
+    <section class="secao-jogo">
+      <h2>Desafio do Consumo Consciente</h2>
+      <p class="descricao">Você tem um orçamento fictício de <strong>R$100</strong>. Faça escolhas para o seu dia a dia e veja como elas impactam o meio ambiente e seu bolso!</p>
+      <form id="quizForm">
+        <!-- Pergunta 1 -->
+        <div class="pergunta">
+          <p>1. Você precisa comprar arroz. Qual opção escolhe?</p>
+          <label><input type="radio" name="q1" value="0,10"> Arroz a granel (leva seu próprio pote) - R$10</label><br>
+          <label><input type="radio" name="q1" value="0,12"> Arroz em embalagem plástica - R$12</label><br>
+        </div>
+        <!-- Pergunta 2 -->
+        <div class="pergunta">
+          <p>2. Vai ao mercado. Como leva as compras?</p>
+          <label><input type="radio" name="q2" value="0,0"> Sacola reutilizável de casa - R$0</label><br>
+          <label><input type="radio" name="q2" value="0,2"> Compra sacolas plásticas - R$2</label><br>
+        </div>
+        <!-- Pergunta 3 -->
+        <div class="pergunta">
+          <p>3. Precisa de uma garrafa de água para a escola:</p>
+          <label><input type="radio" name="q3" value="0,20"> Compra uma garrafa reutilizável - R$20 (dura anos)</label><br>
+          <label><input type="radio" name="q3" value="0,3"> Compra uma garrafa plástica descartável - R$3</label><br>
+        </div>
+        <!-- Pergunta 4 -->
+        <div class="pergunta">
+          <p>4. Transporte para ir à escola:</p>
+          <label><input type="radio" name="q4" value="0,0"> Vai de bicicleta ou a pé - R$0</label><br>
+          <label><input type="radio" name="q4" value="0,15"> Vai de carro (combustível) - R$15</label><br>
+        </div>
+        <!-- Pergunta 5 -->
+        <div class="pergunta">
+          <p>5. Lanche da tarde:</p>
+          <label><input type="radio" name="q5" value="0,5"> Prepara em casa (menos embalagem) - R$5</label><br>
+          <label><input type="radio" name="q5" value="0,12"> Compra industrializado (mais embalagem) - R$12</label><br>
+        </div>
+
+        <button type="submit" class="btn-jogar">Ver meu impacto!</button>
+      </form>
+
+      <!-- Resultado -->
+      <div id="resultado" class="resultado"></div>
+    </section>
+  </main>
+
+  <!-- Rodapé -->
+  <footer>
+    <p>© 2025 Guilherme Spada e Rafael Zambonin | Todos os direitos reservados</p>
+  </footer>
+
+  <!-- Scripts Loader, Topo e Modo Noturno -->
+  <script>
+    // Loader
+    window.addEventListener("load", () => {
+      const loader = document.getElementById("loader");
+      loader.classList.add("fadeOut");
+      setTimeout(() => loader.style.display = "none", 800);
+    });
+
+
+    
+    // Botão voltar ao topo
+    const backToTop = document.getElementById("backToTop");
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 300) backToTop.classList.add("show");
+      else backToTop.classList.remove("show");
+    });
+    backToTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+
+
+
+    // Modo noturno
+    const darkModeBtn = document.getElementById('darkModeToggle');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    function setDarkMode(on) {
+      if(on) document.body.classList.add('dark-mode');
+      else document.body.classList.remove('dark-mode');
+      localStorage.setItem('darkMode', on ? 'on' : 'off');
+      darkModeBtn.innerHTML = on ? '☀️' : '🌙';
+    }
+
+
+
+    (function() {
+      const saved = localStorage.getItem('darkMode');
+      if(saved === 'on' || (saved === null && prefersDark)) setDarkMode(true);
+      else setDarkMode(false);
+    })();
+    darkModeBtn.addEventListener('click', () => {
+      setDarkMode(!document.body.classList.contains('dark-mode'));
+    });
+
+
+
+    // Jogo Consumo Consciente
+    document.getElementById('quizForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      let total = 100;
+      let impacto = 0;
+      let respostas = [];
+      for(let i=1; i<=5; i++){
+        let op = document.querySelector('input[name=q'+i+']:checked');
+        if(!op){
+          alert('Responda todas as perguntas!');
+          return;
+        }
+        let val = op.value.split(',');
+        impacto += Number(val[0]);
+        total -= Number(val[1]);
+        respostas.push(op.parentElement.textContent.trim());
+      }
+
+
+      let nivel;
+      if(impacto === 0) nivel = "Excelente! Suas escolhas foram super conscientes! 🌱";
+      else if(impacto <= 1) nivel = "Muito bom! Pequenos ajustes podem melhorar ainda mais.";
+      else nivel = "Atenção! Suas escolhas podem ser mais sustentáveis.";
+
+      document.getElementById('resultado').innerHTML = `
+        <h3>Resultado:</h3>
+        <p><strong>Dinheiro restante:</strong> R$${total.toFixed(2)}</p>
+        <p><strong>Nível de Consciência:</strong> ${nivel}</p>
+        <details style='margin-top:10px;'>
+          <summary>Minhas escolhas</summary>
+          <ul>${respostas.map(r=>`<li>${r}</li>`).join('')}</ul>
+        </details>
+        <button onclick='window.location.reload()' class='btn-reiniciar'>Jogar novamente</button>
+      `;
+      this.style.display = 'none';
+    });
+  </script>  
+
+
+
+ <script>
+const darkModeToggle = document.getElementById('darkModeToggle');
+let isDragging = false;
+let offsetX, offsetY;
+let moved = false;
+
+
+
+// Salva preferência no localStorage
+function setDarkMode(on) {
+  if(on) document.body.classList.add('dark-mode');
+  else document.body.classList.remove('dark-mode');
+  localStorage.setItem('darkMode', on ? 'on' : 'off');
+  darkModeToggle.innerHTML = on ? '☀️' : '🌙';
+}
+
+
+
+// Carrega preferência ao abrir a página
+(function() {
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const saved = localStorage.getItem('darkMode');
+  if(saved === 'on' || (saved === null && prefersDark)) setDarkMode(true);
+  else setDarkMode(false);
+})();
+
+
+
+// Clique e arraste
+darkModeToggle.addEventListener('mousedown', function(e) {
+  isDragging = true;
+  moved = false;
+  offsetX = e.clientX - darkModeToggle.getBoundingClientRect().left;
+  offsetY = e.clientY - darkModeToggle.getBoundingClientRect().top;
+  darkModeToggle.style.position = 'absolute';
+  darkModeToggle.style.zIndex = 9999;
+  document.body.appendChild(darkModeToggle);
+});
+
+
+
+document.addEventListener('mousemove', function(e) {
+  if (isDragging) {
+    darkModeToggle.style.left = (e.clientX - offsetX) + 'px';
+    darkModeToggle.style.top = (e.clientY - offsetY) + 'px';
+    moved = true;
+  }
+});
+
+
+
+document.addEventListener('mouseup', function(e) {
+  if (isDragging) {
+    isDragging = false;
+    // Só ativa modo noturno se NÃO houve movimento
+    if (!moved) {
+      setDarkMode(!document.body.classList.contains('dark-mode'));
+    }
+  }
+});
+</script>
+</body>
+</html>

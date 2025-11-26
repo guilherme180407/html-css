@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agendamento Basquete</title>
+  <link rel="stylesheet" href="agendamento.css">
+</head>
+<body>
+  <!-- Botão Modo Noturno -->
+  <button id="darkModeToggle" title="Alternar modo noturno">🌙</button>
+  <!-- Loader -->
+  <div id="loader">
+    <img src="SPADRE.jpg.png" alt="Logo SPADRE" class="loader-img">
+  </div>
+  <!-- Botão voltar ao topo -->
+  <button id="backToTop" title="Voltar ao topo">▲</button>
+  <!-- Cabeçalho -->
+  <header class="topo">
+    <div class="container-header">
+      <div class="perfil">
+        <img src="SPADRE.jpg.png" alt="Foto da equipe" class="foto-perfil">
+        <div class="nomes">
+          <h1>SPADRE</h1>
+          <p>Guilherme e Rafael</p>
+        </div>
+      </div>
+      <nav class="menu">
+        <a href="index.html">Página Inicial</a>
+        <a href="sobre.html">Sobre o Site</a>
+        <a href="projetos.html">Projetos</a>
+        <a href="turma.html">Turma</a>
+        <a href="postagens.html">Postagens</a>
+        <a href="jogos.html">Jogos</a>
+        <a href="feira.html">E'Sustentar</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="conteudo">
+    <section class="agenda-card">
+      <h2>Agendamento do Basquete</h2>
+      <p>Escolha um horário disponível para reservar sua partida de Basquete durante a Feira!</p>
+      <div class="horarios-lista" id="horariosLista"></div>
+      <p class="obs">* Horários ocupados ficam destacados e não podem ser reservados.</p>
+    </section>
+  </main>
+
+  <!-- Rodapé -->
+  <footer>
+    <p>© 2025 Guilherme Spada e Rafael Zambonin | Todos os direitos reservados</p>
+  </footer>
+
+  <!-- Scripts padrão + agendamento -->
+  <script>
+    // Loader
+    window.addEventListener("load", () => {
+      const loader = document.getElementById("loader");
+      loader.classList.add("fadeOut");
+      setTimeout(() => loader.style.display = "none", 800);
+    });
+
+    // Botão voltar ao topo
+    const backToTop = document.getElementById("backToTop");
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 300) backToTop.classList.add("show");
+      else backToTop.classList.remove("show");
+    });
+    backToTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+
+    // Modo noturno com localStorage
+    const darkModeBtn = document.getElementById('darkModeToggle');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    function setDarkMode(on) {
+      if(on) document.body.classList.add('dark-mode');
+      else document.body.classList.remove('dark-mode');
+      localStorage.setItem('darkMode', on ? 'on' : 'off');
+      darkModeBtn.innerHTML = on ? '☀️' : '🌙';
+    }
+    (function() {
+      const saved = localStorage.getItem('darkMode');
+      if(saved === 'on' || (saved === null && prefersDark)) setDarkMode(true);
+      else setDarkMode(false);
+    })();
+    darkModeBtn.addEventListener('click', () => {
+      setDarkMode(!document.body.classList.contains('dark-mode'));
+    });
+
+    // =========================
+    // SISTEMA DE AGENDAMENTO BASQUETE
+    // =========================
+
+    // Gera os horários de 08:00 até 20:00 de meia em meia hora
+    function gerarHorarios() {
+      const horarios = [];
+      let hora = 8, minuto = 0;
+      while (hora < 20 || (hora === 20 && minuto === 0)) {
+        let h = hora.toString().padStart(2,'0');
+        let m = minuto.toString().padStart(2,'0');
+        horarios.push(`${h}:${m}`);
+        minuto += 30;
+        if (minuto === 60) { minuto = 0; hora++; }
+        if (hora > 20 || (hora === 20 && minuto > 0)) break;
+      }
+      return horarios;
+    }
+
+    // Carrega agendamentos do localStorage
+    function getAgendamentos() {
+      return JSON.parse(localStorage.getItem('basquete_agenda') || '{}');
+    }
+    // Salva agendamentos no localStorage
+    function setAgendamentos(obj) {
+      localStorage.setItem('basquete_agenda', JSON.stringify(obj));
+    }
+
+    // Renderiza a lista de horários
+    function renderHorarios() {
+      const horarios = gerarHorarios();
+      const agendados = getAgendamentos();
+      const lista = document.getElementById('horariosLista');
+      lista.innerHTML = '';
+      horarios.forEach(horario => {
+        const div = document.createElement('div');
+        div.className = 'horario-item' + (agendados[horario] ? ' ocupado' : '');
+        div.innerHTML = `<span>${horario} - ${agendados[horario] ? 'Ocupado' : 'Disponível'}</span>`;
+        if (!agendados[horario]) {
+          div.title = "Clique para reservar este horário";
+          div.addEventListener('click', () => reservarHorario(horario));
+        }
+        lista.appendChild(div);
+      });
+    }
+
+    // Função para reservar um horário
+    function reservarHorario(horario) {
+      if (!confirm(`Deseja reservar o horário ${horario} para seu time?`)) return;
+      const nome = prompt("Digite o nome do time ou responsável:");
+      if (!nome) return;
+      const agendados = getAgendamentos();
+      agendados[horario] = nome;
+      setAgendamentos(agendados);
+      renderHorarios();
+      alert(`Horário ${horario} reservado com sucesso!`);
+    }
+
+    // Inicializa a agenda ao carregar a página
+    renderHorarios();
+  </script>
+</body>
+</html>

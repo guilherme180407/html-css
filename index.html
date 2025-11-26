@@ -1,0 +1,205 @@
+<!-- LINK PARA O SITE WIX:
+
+https://guilhermespada8.wixsite.com/spadinha
+
+-->
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Professor não vai ver isso</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- Botão Modo Noturno -->
+
+<!-- NOVO: Loader de carregamento -->
+<div id="loader">
+  <img src="SPADRE.jpg.png" alt="Logo SPADRE" class="loader-img">
+</div>
+<!-- FIM DO LOADER -->
+
+<!-- NOVO: Botão voltar ao topo -->
+<button id="backToTop" title="Voltar ao topo">▲</button>
+<!-- FIM DO BOTÃO -->
+
+<header class="topo">
+  <div class="container-header">
+    <div class="perfil">
+      <img src="SPADRE.jpg.png" alt="Foto da equipe" class="foto-perfil">
+      <div class="nomes">
+        <h1>SPADRE</h1>
+        <p>Guilherme e Rafael</p>
+      </div>
+    </div>                                                                                                                                                                                                                                                                                                                       
+
+    <nav class="menu">
+      <a href="index.html" class="ativo">Página Inicial</a>
+      <a href="sobre.html">Sobre o Site</a>
+      <a href="projetos.html">Projetos</a>
+      <a href="turma.html">Turma</a>
+      <a href="postagens.html">Postagens</a>
+      <a href="jogos.html">Jogos</a>
+      <a href="feira.html">E'Sustentar</a>
+      <!-- Botão Modo Noturno -->
+      <button id="darkModeToggle" title="Alternar modo noturno">🌙</button>
+    </nav>
+  </div>
+</header>
+
+<section class="main-content">
+  <div class="hero-image">
+    <h2>Sustentabilidade na Educação</h2>
+    <div class="button-group">
+      <a href="postagens.html" class="button">
+        <span class="button-title">Postagens</span><br>
+        <span class="button-description">Veja as nossas postagens mais visitadas</span>
+      </a>
+      <a href="projetos.html" class="button">
+        <span class="button-title">Projetos</span><br>
+        <span class="button-description">Conheça os projetos sustentáveis</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="image-space">
+  <div class="image-overlay">
+    <img src="inicial.jpeg" alt="Descrição da imagem">
+    <div class="image-text">Construindo um futuro verde 🌿</div>
+  </div>
+</div>
+
+<div class="biographies">
+  <a href="guilherme.html" class="bio">
+    <img src="guilherme.jpeg" alt="Foto de Guilherme">
+    <div class="bio-text">
+      <h3>Guilherme Spada</h3>
+      <p>Nasci em 18 de Abril de 2007, na cidade de Ampére, onde moro até então, estudei desde o 6° ano e estou no 3° ano do Ensino Médio no Colégio Estadual Cívico-Militar Cândido Portinari.
+            Trabalho como assistente de TI na empresa Simonetto e Sulfer desde o ano de 2023.
+            Pretendo cursar Engenharia de Software na UNIPAR de Francisco Beltrão a partir do ano que vem.
+      </p>
+    </div>
+  </a>
+
+  <a href="rafael.html" class="bio">
+    <img src="rafael.jpg.jpeg" alt="Foto de Rafael">
+    <div class="bio-text">
+      <h3>Rafael Zambonin</h3>
+      <p>Nasci em 05 de julho de 2007, na cidade de Salto do Lontra, aos 12 anos iniciei uma experiência vocacional no Seminário Santo Agostinho em Ampére, onde moro.
+            Estudo atualmente na Colégio Estadual Cívico-Militar Cândido Portinari, no 3° Ano de exatas.
+            Pretendo cursar filosofia na Unioeste de Toledo-PR a partir do ano seguinte.
+      </p>
+    </div>
+  </a>
+</div>
+
+<div class="location">
+  <h3>Localização</h3>
+  <p>Colégio Estadual Cívico-Militar Cândido Portinari</p>
+  <div class="map-container">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d833.0646836162787!2d-53.4721752605752!3d-25.915729640234233!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94f0f6adddcd50cf%3A0xf2c0e40d11f739c0!2sR.%20Pres.%20Kenedy%2C%201043%20-%20Centro%2C%20Amp%C3%A9re%20-%20PR%2C%2085640-000!5e0!3m2!1spt-BR!2sbr!4v1761142116982!5m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy"></iframe>
+
+  </div>
+</div>
+
+<section class="parcerias-section">
+  <div class="parcerias-container">
+    <h2>🌎 Conexões Sustentáveis</h2>
+    <p>Visite nossa página de Parceiros</p>
+    <a href="parcerias.html" class="btn-parcerias">Ver Parcerias</a>
+  </div>
+
+  <div class="feedback-container">
+    <h3>Deixe seu Feedback 🌱</h3>
+    <form class="feedback-form">
+      <textarea placeholder="Digite sua mensagem..." required></textarea>
+      <button type="submit">Enviar</button>
+    </form>
+
+    <div class="qr-container">
+      <p>Fale diretamente conosco no WhatsApp:</p>
+      <img src="qrcoderafael.png" alt="QR Code WhatsApp" class="qr-code">
+      <p class="numero"></p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Sustentabilidade na Educação</p>
+</footer>
+
+<!-- NOVO: Script leve para funcionamento do loader e do botão -->
+<script>
+  // Loader desaparece após 1,5s simulando carregamento
+  window.addEventListener("load", () => {
+    const loader = document.getElementById("loader");
+    loader.classList.add("fadeOut");
+    setTimeout(() => loader.style.display = "none", 800);
+  });
+
+  // Botão voltar ao topo
+  const backToTop = document.getElementById("backToTop");
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) backToTop.classList.add("show");
+    else backToTop.classList.remove("show");
+  });
+  backToTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+</script>
+<!-- FIM DO SCRIPT -->
+<script>
+const darkModeToggle = document.getElementById('darkModeToggle');
+let isDragging = false;
+let offsetX, offsetY;
+let moved = false;
+
+// Salva preferência no localStorage
+function setDarkMode(on) {
+  if(on) document.body.classList.add('dark-mode');
+  else document.body.classList.remove('dark-mode');
+  localStorage.setItem('darkMode', on ? 'on' : 'off');
+  darkModeToggle.innerHTML = on ? '☀️' : '🌙';
+}
+
+// Carrega preferência ao abrir a página
+(function() {
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const saved = localStorage.getItem('darkMode');
+  if(saved === 'on' || (saved === null && prefersDark)) setDarkMode(true);
+  else setDarkMode(false);
+})();
+
+// Clique e arraste
+darkModeToggle.addEventListener('mousedown', function(e) {
+  isDragging = true;
+  moved = false;
+  offsetX = e.clientX - darkModeToggle.getBoundingClientRect().left;
+  offsetY = e.clientY - darkModeToggle.getBoundingClientRect().top;
+  darkModeToggle.style.position = 'absolute';
+  darkModeToggle.style.zIndex = 9999;
+  document.body.appendChild(darkModeToggle);
+});
+
+document.addEventListener('mousemove', function(e) {
+  if (isDragging) {
+    darkModeToggle.style.left = (e.clientX - offsetX) + 'px';
+    darkModeToggle.style.top = (e.clientY - offsetY) + 'px';
+    moved = true;
+  }
+});
+
+document.addEventListener('mouseup', function(e) {
+  if (isDragging) {
+    isDragging = false;
+    // Só ativa modo noturno se NÃO houve movimento
+    if (!moved) {
+      setDarkMode(!document.body.classList.contains('dark-mode'));
+    }
+  }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,165 @@
+/* RESET */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* Corpo */
+body {
+  font-family: 'Arial', sans-serif;
+  background: #fff7ed;
+  color: #222;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* TOPO */
+.topo {
+  background: linear-gradient(90deg, #ff9800, #ff5722);
+  padding: 15px 60px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+.container-header { 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.perfil { display: flex; align-items: center; gap: 15px; }
+.foto-perfil { width: 70px; height: 70px; border-radius: 50%; border: 3px solid #fff; object-fit: cover; }
+.nomes h1 { color: #fff; font-size: 1.8rem; }
+.nomes p { color: #ffe0b2; }
+.menu { display: flex; gap: 25px; }
+.menu a { color: #fff; text-decoration: none; font-weight: 500; position: relative; }
+.menu a::after {
+  content: "";
+  position: absolute;
+  bottom: -5px; left:0; height:2px; width:0;
+  background-color:#fff; transition:.3s;
+}
+
+.menu a:hover::after, .menu a.ativo::after { width:100%; }
+
+/* Conteúdo principal */
+.conteudo-chifield {
+  max-width:900px;
+  margin:60px auto;
+  padding:0 20px;
+}
+
+/* Título principal */
+.titulo-chifield {
+  text-align:center;
+  color:#ff6f00;
+  font-size:2.8rem;
+  font-weight:bold;
+  margin-bottom:40px;
+  letter-spacing:2px;
+}
+
+/* Imagens principais */
+.imagens-principais {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:40px;
+  margin-bottom:40px;
+}
+.logo-chifield {
+  width:300px; height:300px; object-fit:cover; border-radius:18px; background:#fff3e0; box-shadow:0px4px16px rgba(255,152,0,.10);
+}
+.foto-time-chifield {
+  width:480px; height:300px; object-fit:cover; border-radius:18px; background:#ffe0b2; box-shadow:0px4px16px rgba(255,152,0,.10);
+}
+
+/* Cards */
+.card-info, .card-venda {
+  background:#fff3e0;
+  border-radius:18px;
+  box-shadow:0px4px12px rgba(255,152,0,.08);
+  padding:32px;
+  margin-bottom:28px;
+}
+.card-info h2, .card-venda h2 { color:#ff9800; margin-bottom:.7em;}
+.card-info p, .card-venda p { color:#333; font-size:.99rem;}
+
+.agenda-titulo {
+  color: #ff6f00;
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 28px; /* Aumente esse valor para mais espaço */
+}
+
+.agenda-botao-container {
+  display:flex;
+  justify-content:center;
+}
+.botao-agendar {
+  background:#ff9800;
+  color:#fff;
+  font-weight:bold;
+  padding:16px 38px;
+  border:none;
+  border-radius:12px;
+  font-size:1.15rem;
+  text-decoration:none;
+  box-shadow:0px4px12px rgba(255,152,0,.13);
+  transition:.3s background,.3s transform;
+}
+.botao-agendar:hover {
+  background:#ff6f00;
+  transform:scale(1.06);
+}
+
+/* Loader */
+#loader {
+  position:fixed; top:0; left:0; width:100%; height:100vh;
+  background:#fff7ed; display:flex; justify-content:center; align-items:center;
+  z-index:10000; transition:.8s;
+}
+#loader.fadeOut { opacity:0; visibility:hidden;}
+.loader-img { width:150px;height:150px;border-radius:50%;object-fit:cover;animation:spin1.8s linear infinite;}
+@keyframes spin { from{transform:rotate(0deg);} to{transform:rotate(360deg);} }
+
+/* Botão Voltar ao Topo */
+#backToTop {
+  position:fixed; bottom:30px; right:30px; background:#ff9800;color:white;border:none;border-radius:50%;
+  width:45px;height:45px;font-size:22px;cursor:pointer; opacity:0; visibility:hidden; transition:.7s cubic-bezier(.4,2,.6,1); box-shadow:0px4px12px rgba(0,0,0,.3); z-index:9999;
+}
+#backToTop.show { opacity:1; visibility:visible;}
+#backToTop:hover { background:#ff6f00; transform:scale(1.1); }
+
+/* Rodapé */
+footer {
+  background:#ffb74d;color:#000;text-align:center;padding:15px;margin-top:auto;font-size:.97rem; box-shadow:0 -2px10px rgba(255,152,0,.08);
+}
+
+/* =========================== MODO NOTURNO =========================== */
+body.dark-mode { background-color:#181a1b !important;color:#e0e0e0 !important;}
+body.dark-mode .topo { background:linear-gradient(90deg,#ff6f00,#bf360c);}
+body.dark-mode .nomes h1,
+body.dark-mode .nomes p,
+body.dark-mode .menu a,
+body.dark-mode .menu a::after { color:#ffd180 !important;}
+body.dark-mode .conteudo-chifield { background-color:#181a1b !important;}
+body.dark-mode .titulo-chifield,
+body.dark-mode .agenda-titulo { color:#ffa726 !important;}
+body.dark-mode .card-info,
+body.dark-mode .card-venda { background:#23272a !important;}
+body.dark-mode .card-info h2,
+body.dark-mode .card-venda h2 { color:#ffa726 !important;}
+body.dark-mode .card-info p,
+body.dark-mode .card-venda p { color:#ffd180 !important;}
+body.dark-mode footer { background:#bf360c !important;color:#ffd180 !important;}
+body.dark-mode #loader { background:#181a1b !important;}
+body.dark-mode #backToTop { background:#23272a !important;color:#ffa726 !important;}
+body.dark-mode #backToTop:hover { background:#c5d204 !important;}
+/* Botão modo noturno */
+#darkModeToggle {
+   position:fixed; top:30px; right:30px; z-index:10001; background:#fff;color:#181a1b;border:none;border-radius:50%;
+   width:45px;height:45px;font-size:22px;cursor:pointer; box-shadow:0px4px12px rgba(255,152,0,.18);transition:.3s;}
+#darkModeToggle:hover { background:#181a1b;color:#ffa726;}
+body.dark-mode #darkModeToggle { background:#23272a;color:#ffa726;}
+/* Responsivo */
+@media (max-width:700px){
+   .imagens-principais{flex-direction:column;gap:20px;}
+   .logo-chifield,.foto-time-chifield{width:90vw;height:auto;}
+   .conteudo-chifield{padding-left:5vw;padding-right:5vw;}
+}

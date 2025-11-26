@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Professor não vai ver isso</title>
+  <link rel="stylesheet" href="turma.css">
+</head>
+<body>
+   <!-- Botão Modo Noturno -->
+<button id="darkModeToggle" title="Alternar modo noturno">🌙</button>
+<!-- NOVO: Loader de carregamento -->
+<div id="loader">
+  <img src="SPADRE.jpg.png" alt="Logo SPADRE" class="loader-img">
+</div>
+<!-- FIM DO LOADER -->
+
+<!-- NOVO: Botão voltar ao topo -->
+<button id="backToTop" title="Voltar ao topo">▲</button>
+<!-- FIM DO BOTÃO -->
+
+  <!-- Cabeçalho padrão -->
+   <header class="topo">
+  <div class="container-header">
+    <div class="perfil">
+      <img src="SPADRE.jpg.png" alt="Foto da equipe" class="foto-perfil">
+      <div class="nomes">
+        <h1>SPADRE</h1>
+        <p>Guilherme e Rafael</p>
+      </div>
+    </div>
+
+    <nav class="menu">
+      <a href="index.html">Página Inicial</a>
+      <a href="sobre.html">Sobre o Site</a>
+      <a href="projetos.html">Projetos</a>
+      <a href="turma.html" class="ativo">Turma</a>
+      <a href="postagens.html">Postagens</a>
+      <a href="jogos.html">Jogos</a>
+      <a href="feira.html">E'Sustentar</a>
+    </nav>
+  </div>
+</header>
+
+  <!-- Título -->
+  <section class="intro">
+    <h2>Turma</h2>
+    <p>Turma do terceiro ano do ensino médio</p>
+  </section>
+
+  <!-- Galeria de alunos -->
+  <section class="galeria">
+    <!-- Modelo de aluno -->
+    <div class="aluno" onclick="abrirModal(this)">
+      <img src="alessandro.jpg" alt="Aluno">
+      <h3>Alessandro</h3>
+      <p>Broca Haintz</p>
+    </div>
+
+    <div class="aluno" onclick="abrirModal(this)">
+      <img src="Debora.jpg" alt="Aluno">
+      <h3>Débora</h3>
+      <p>Martins dos Santos</p>
+    </div>
+
+    <div class="aluno" onclick="abrirModal(this)">
+      <img src="eduardo.jpg" alt="Aluno">
+      <h3>Eduardo</h3>
+      <p>Asolini Uncini</p>
+    </div>
+
+        <div class="aluno" onclick="abrirModal(this)">
+      <img src="emanuelly.jpg" alt="Aluno">
+      <h3>Emanuelly</h3>
+      <p>Machado Padilha</p>
+    </div>
+
+        <div class="aluno" onclick="abrirModal(this)">
+      <img src="ezequiel.jpg" alt="Aluno">
+      <h3>Ezequiel</h3>
+      <p>de Mattos Tortora</p>
+    </div>
+
+        <div class="aluno" onclick="abrirModal(this)">
+      <img src="felipe.jpg" alt="Aluno">
+      <h3>Felipe</h3>
+      <p>Forte Both</p>
+    </div>
+
+        <div class="aluno" onclick="abrirModal(this)">
+      <img src="gabi.jpg" alt="Aluno">
+      <h3>Gabriella</h3>
+      <p>Oenning Peixer</p>
+    </div>
+
+        <div class="aluno" onclick="abrirModal(this)">
+      <img src="guilherme.jpeg" alt="Aluno">
+      <h3>Guilherme</h3>
+      <p>Spada</p>
+    </div>
+
+    <div class="aluno" onclick="abrirModal(this)">
+      <img src="heloisa.jpg" alt="Aluno">
+      <h3>Heloisa</h3>
+      <p>Barriquelo</p>
+    </div>
+
+        <div class="aluno" onclick="abrirModal(this)">
+      <img src="iza.jpg" alt="Aluno">
+      <h3>Izadora</h3>
+      <p>Thisen Ferreira</p>
+    </div>
+
+        <div class="aluno" onclick="abrirModal(this)">
+      <img src="juan.jpg" alt="Aluno">
+      <h3>Juan</h3>
+      <p>Boeno</p>
+    </div>
+
+        <div class="aluno" onclick="abrirModal(this)">
+      <img src="kaua.jpg" alt="Aluno">
+      <h3>Kauã</h3>
+      <p>Soares Ramalho de Jesus</p>
+    </div>
+
+        <div class="aluno" onclick="abrirModal(this)">
+      <img src="laura.jpg" alt="Aluno">
+      <h3>Laura</h3>
+      <p>Tortora Santos</p>
+    </div>
+
+    <div class="aluno" onclick="abrirModal(this)">
+      <img src="manu.jpg" alt="Aluno">
+      <h3>Manuela</h3>
+      <p>Koch Conzzatti</p>
+    </div>
+
+        <div class="aluno" onclick="abrirModal(this)">
+      <img src="matheus.jpg" alt="Aluno">
+      <h3>Matheus</h3>
+      <p>Vital Taschim</p>
+    </div>
+
+        <div class="aluno" onclick="abrirModal(this)">
+      <img src="milenna.jpg" alt="Aluno">
+      <h3>Milenna</h3>
+      <p>de Oliveira</p>
+    </div>
+
+        <div class="aluno" onclick="abrirModal(this)">
+      <img src="miqueias.jpg" alt="Aluno">
+      <h3>Miqueias</h3>
+      <p>Martins de Oliveira</p>
+    </div>
+
+        <div class="aluno" onclick="abrirModal(this)">
+      <img src="rayssa.jpg" alt="Aluno">
+      <h3>Rayssa</h3>
+      <p>Fausto de Morais</p>
+    </div>
+
+  <div class="aluno" onclick="abrirModal(this)">
+      <img src="rafael.jpg.jpeg" alt="Aluno">
+      <h3>Rafael</h3>
+      <p>Zambonin</p>
+    </div>
+
+        <div class="aluno" onclick="abrirModal(this)">
+      <img src="renata.jpg" alt="Aluno">
+      <h3>Renata</h3>
+      <p>Luquini Moschetta</p>
+    </div>
+
+        <div class="aluno" onclick="abrirModal(this)">
+      <img src="samara.jpg" alt="Aluno">
+      <h3>Samara</h3>
+      <p>Varella Lupatini</p>
+    </div>
+
+        <div class="aluno" onclick="abrirModal(this)">
+      <img src="vinicius.jpg" alt="Aluno">
+      <h3>Vinicius</h3>
+      <p>Gerardi da Silva</p>
+    </div>
+
+
+    <!-- Repita o modelo até o aluno 22 -->
+    <!-- ... -->
+  </section>
+
+  <!-- Área do professor -->
+ <section class="professor">
+  <h2>Professor Responsável</h2>
+  <div class="bio-container">
+    <div class="bio-prof">
+      <img src="foto juca.jpg" alt="Professor">
+      <div class="bio-text">
+        <h3>JOSE ADEMIR GOMES DOS SANTOS</h3>
+        <p>
+          Treinamento de professores na área das Tecnologias (TICS), Mestre em Desenvolvimento Rural Sustentável, Especialista em Alfabetização Matemática, Educação do Campo e Inovações Habilidades Competências Educacionais e/ou Profissionais, Ensino Superior (Matemática com Enfase em Computação).
+           Professor do Ensino Superior, Ensino Fundamental Técnico e Médio
+        </p>
+      </div>
+    </div>
+
+    <div class="projeto-info">
+      <h3>SOBRE O PROJETO</h3>
+      <p>
+        O projeto tem como intuito o desenvolvimento de um site com base no criado anteriormente através da plataforma Wix.com. Avaliando os alunos pelo entendimento de cada um em desenvolvimento web através do Visual Studio, plataforma disponibilizada pela Educação do Paraná e com o auxílio do ChatGPT na criação do site.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Modal da imagem -->
+  <div id="modal" class="modal" onclick="fecharModal()">
+    <img id="modal-img" src="" alt="Visualização ampliada">
+  </div>
+
+  <!-- Rodapé padrão -->
+  <footer class="rodape">
+    <p>© 2025 Guilherme Spada e Rafael Zambonin | Todos os direitos reservados</p>
+  </footer>
+
+  <script>
+    function abrirModal(el) {
+      const modal = document.getElementById("modal");
+      const modalImg = document.getElementById("modal-img");
+      modal.style.display = "flex";
+      modalImg.src = el.querySelector("img").src;
+    }
+
+    function fecharModal() {
+      document.getElementById("modal").style.display = "none";
+    }
+  </script>
+  <!-- NOVO: Script leve para funcionamento do loader e do botão -->
+<script>
+  // Loader desaparece após 1,5s simulando carregamento
+  window.addEventListener("load", () => {
+    const loader = document.getElementById("loader");
+    loader.classList.add("fadeOut");
+    setTimeout(() => loader.style.display = "none", 800);
+  });
+
+  // Botão voltar ao topo
+  const backToTop = document.getElementById("backToTop");
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) backToTop.classList.add("show");
+    else backToTop.classList.remove("show");
+  });
+  backToTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+</script>
+<!-- FIM DO SCRIPT -->
+ <script>
+const darkModeToggle = document.getElementById('darkModeToggle');
+let isDragging = false;
+let offsetX, offsetY;
+let moved = false;
+
+// Salva preferência no localStorage
+function setDarkMode(on) {
+  if(on) document.body.classList.add('dark-mode');
+  else document.body.classList.remove('dark-mode');
+  localStorage.setItem('darkMode', on ? 'on' : 'off');
+  darkModeToggle.innerHTML = on ? '☀️' : '🌙';
+}
+
+// Carrega preferência ao abrir a página
+(function() {
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const saved = localStorage.getItem('darkMode');
+  if(saved === 'on' || (saved === null && prefersDark)) setDarkMode(true);
+  else setDarkMode(false);
+})();
+
+// Clique e arraste
+darkModeToggle.addEventListener('mousedown', function(e) {
+  isDragging = true;
+  moved = false;
+  offsetX = e.clientX - darkModeToggle.getBoundingClientRect().left;
+  offsetY = e.clientY - darkModeToggle.getBoundingClientRect().top;
+  darkModeToggle.style.position = 'absolute';
+  darkModeToggle.style.zIndex = 9999;
+  document.body.appendChild(darkModeToggle);
+});
+
+document.addEventListener('mousemove', function(e) {
+  if (isDragging) {
+    darkModeToggle.style.left = (e.clientX - offsetX) + 'px';
+    darkModeToggle.style.top = (e.clientY - offsetY) + 'px';
+    moved = true;
+  }
+});
+
+document.addEventListener('mouseup', function(e) {
+  if (isDragging) {
+    isDragging = false;
+    // Só ativa modo noturno se NÃO houve movimento
+    if (!moved) {
+      setDarkMode(!document.body.classList.contains('dark-mode'));
+    }
+  }
+});
+</script>
+</body>
+</html>

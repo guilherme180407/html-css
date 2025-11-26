@@ -1,0 +1,227 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: Arial, sans-serif; min-height: 100vh; }
+
+/* Cabeçalho */
+.topo { background: linear-gradient(90deg, #16a34a, #15803d); padding: 15px 60px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+.container-header { display: flex; justify-content: space-between; align-items: center; }
+.perfil { display: flex; align-items: center; gap: 15px; }
+.foto-perfil { width: 70px; height: 70px; border-radius: 50%; border: 3px solid #fff; }
+.nomes h1 { color: #fff; font-size: 1.8rem; }
+.nomes p { color: #dcfce7; font-size: .9rem; }
+.menu { display: flex; gap: 25px; }
+.menu a { color: #fff; text-decoration: none; font-weight: 500; position: relative; padding-bottom:6px;}
+.menu a.ativo::after, .menu a:hover::after { content: ""; position: absolute; left:0; bottom:0; width:100%; height:2.5px; background-color:#fff; }
+.menu a::after { content:""; position:absolute; left:0; bottom:0; width:0; height:2.5px; background-color:#fff; transition:.3s; }
+.menu a:hover::after { width:100%; }
+.menu a.ativo { font-weight:bold; }
+
+/* Conteúdo principal */
+.conteudo { max-width:1000px; margin:60px auto; padding:0 20px; }
+
+/* Identificação da Turma */
+.identificacao-turma h2 {
+  text-align:center;
+  color:#14532d;
+  font-size:2.2rem;
+  margin-bottom:30px;
+}
+
+.fotos-turma-professores {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.professor-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #b1f7ba;
+  border-radius: 16px;
+  padding: 18px 20px;
+  box-shadow: 0 4px 12px rgba(22,163,74,.10);
+}
+
+.foto-professor {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #16a34a;
+  margin-bottom: 12px;
+}
+
+.nome-professor {
+  color: #14532d;
+  font-size: 1.15rem;
+  font-weight: bold;
+}
+
+.fotos-turma-professores .foto-turma {
+  max-width: 380px;
+  width: 100%;
+  border-radius: 18px;
+  box-shadow:0 4px12px rgba(22,163,74,.10);
+}
+
+/* Responsivo */
+@media (max-width:700px) {
+  .fotos-turma-professores {
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+  }
+}
+
+/* Seção de Projetos */
+.projetos-section {
+  margin-top:40px;
+}
+.projetos-section h3 {
+    text-align:center;
+    color:#14532d;
+    margin-bottom:36px;
+    font-size: 2.2rem; /* ou 2.5rem, 3rem, etc. */
+    font-weight: bold;  /* (opcional) deixa mais forte */
+}
+.projetos-cards {
+  display:flex;
+  flex-direction:column;
+  gap:32px;
+}
+
+/* Card de Projeto */
+.projeto-card {
+  display:flex;
+  background:#b1f7ba;
+  border-radius:14px;
+  box-shadow:0 4px8px rgba(22,163,74,.10);
+  overflow:hidden;
+}
+.foto-projeto {
+  width:180px;
+  height:200px;
+  object-fit:cover;
+  border-top-left-radius:14px;
+  border-bottom-left-radius:14px;
+  border-top-right-radius:0;
+  border-bottom-right-radius:0;
+  display:block;
+}
+.info-projeto {
+  flex:1;
+  padding:36px; /* aumentei o padding para mais espaço */
+}
+.info-projeto h4 {
+  color:#14532d;
+  font-size:2rem; /* mais chamativo */
+  margin-bottom:18px;
+}
+.info-projeto p {
+  color:#064e3b;
+  font-size:1.25rem; /* maior para melhor leitura */
+}
+
+/* Loader */
+#loader { position: fixed; top:0; left:0; width:100%; height:100vh; background:#f6f9f6; display:flex; justify-content:center; align-items:center; z-index:10000; transition:.8s opacity,.8s visibility;}
+#loader.fadeOut { opacity:0; visibility:hidden;}
+.loader-img { width:150px;height:150px;border-radius:50%;object-fit:cover;animation:.9s spin linear infinite;}
+@keyframes spin { from{transform:rotate(0deg);} to{transform:rotate(360deg);} }
+
+/* Botão Voltar ao Topo */
+#backToTop { position:fixed; bottom:30px; right:30px; background:#16a34a;color:white;border:none;border-radius:50%;width:45px;height:45px;font-size:22px;cursor:pointer;opacity:0;visibility:hidden;transition:.7s opacity,.3s transform;box-shadow:0 4px12px rgba(0,0,0,.3);z-index:9999;}
+#backToTop.show { opacity:1; visibility:visible;}
+#backToTop:hover { background:#15803d; transform:scale(1.1); }
+
+/* Rodapé */
+footer { background:#4ade80;color:#000;text-align:center;padding:15px;margin-top:auto;font-size:.97rem; box-shadow:0 -2px10px rgba(0,0,0,.08); }
+
+/* Responsividade */
+@media (max-width:900px) {
+  .projeto-card { flex-direction:column; align-items:center;}
+  .foto-projeto {
+    width:100%;
+    max-width:none;
+    border-radius:14px 14px 0 0 !important;
+    height:auto;
+    min-height:180px;
+    object-fit:cover;
+    display:block;
+  }
+}
+
+/* ================= MODO NOTURNO ================== */
+body.dark-mode { background-color:#181a1b !important;color:#e0e0e0 !important;}
+body.dark-mode .topo { background:linear-gradient(90deg,#14532d,#052e16);}
+body.dark-mode .nomes h1, body.dark-mode .nomes p, body.dark-mode .menu a, body.dark-mode .menu a::after { color:#d1fae5 !important;}
+body.dark-mode .identificacao-turma h2,
+body.dark-mode .projetos-section h3,
+body.dark-mode .info-projeto h4 { color:#4ade80 !important;}
+body.dark-mode .projetos-section { background:none !important;}
+body.dark-mode .projetos-cards {
+    gap:32px !important;
+    background:none !important;
+}
+body.dark-mode .projeto-card,
+body.dark-mode .info-projeto {
+    background:#23272a !important;
+}
+body.dark-mode .foto-projeto {
+    background:#23272a !important;
+}
+body.dark-mode .projeto-card { box-shadow:none;}
+body.dark-mode .info-projeto p { color:#bbf7d0 !important;}
+body.dark-mode footer { background:#052e16 !important;color:#bbf7d0 !important;}
+body.dark-mode #loader { background:#181a1b !important;}
+body.dark-mode #backToTop { background:#23272a !important;color:#4ade80 !important;}
+body.dark-mode #backToTop:hover { background:#14532d !important;}
+/* Botão modo noturno */
+#darkModeToggle { position:fixed; top:30px; right:30px; z-index:10001;background:#fff;color:#181a1b;border:none;border-radius:50%;width:45px;height:45px;font-size:22px;cursor:pointer;box-shadow:0 4px12px rgba(0,0,0,.2);transition:.3s background-color,.3s color,.2s transform;}
+#darkModeToggle:hover{background:#181a1b;color:#fff;}
+body.dark-mode #darkModeToggle{background:#23272a;color:#fff;}
+body.dark-mode .professor-card {
+    background: #23272a !important;
+}
+body.dark-mode .nome-professor {
+    color: #4ade80 !important;
+}
+.navegacao-turmas {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin: 48px 0 24px 0;
+}
+
+.btn-turma {
+  background: #16a34a;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 28px;
+  font-size: 1.08rem;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(22,163,74,.10);
+  transition: background .2s, color .2s, transform .15s;
+}
+
+.btn-turma:hover,
+.btn-turma.ativo {
+  background: #15803d;
+  color: #bbf7d0;
+  transform: scale(1.07);
+}
+
+/* Modo noturno */
+body.dark-mode .btn-turma {
+  background: #23272a;
+  color: #4ade80;
+}
+
+body.dark-mode .btn-turma:hover,
+body.dark-mode .btn-turma.ativo {
+  background: #14532d;
+  color: #bbf7d0;
+}

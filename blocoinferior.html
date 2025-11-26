@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Em Breve - SPADRE</title>
+    <link rel="stylesheet" href="blocoinferior.css">
+</head>
+<body>
+    <!-- Botão Modo Noturno -->
+    <button id="darkModeToggle" title="Alternar modo noturno">🌙</button>
+    <!-- Loader -->
+    <div id="loader">
+        <img src="SPADRE.jpg.png" alt="Logo SPADRE" class="loader-img">
+    </div>
+    <!-- Botão voltar ao topo -->
+    <button id="backToTop" title="Voltar ao topo">▲</button>
+    <!-- Cabeçalho -->
+    <header class="topo">
+        <div class="container-header">
+            <div class="perfil">
+                <img src="SPADRE.jpg.png" alt="Foto da equipe" class="foto-perfil">
+                <div class="nomes">
+                    <h1>SPADRE</h1>
+                    <p>Guilherme e Rafael</p>
+                </div>
+            </div>
+            <nav class="menu">
+                <a href="index.html">Página Inicial</a>
+                <a href="sobre.html">Sobre o Site</a>
+                <a href="projetos.html">Projetos</a>
+                <a href="turma.html">Turma</a>
+                <a href="postagens.html">Postagens</a>
+                <a href="jogos.html">Jogos</a>
+                <a href="feira.html">E'Sustentar</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="conteudo">
+        <section class="em-breve-section">
+            <div class="em-breve-card">
+                <h2>Em Breve...</h2>
+                <p>Mais informações serão disponibilizadas aqui em breve.<br>Fique atento às novidades!</p>
+                <span class="icone-relogio">⏳</span>
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>© 2025 Guilherme Spada e Rafael Zambonin | Todos os direitos reservados</p>
+    </footer>
+
+    <!-- Scripts padrão -->
+    <script>
+        // Loader
+        window.addEventListener("load", () => {
+            const loader = document.getElementById("loader");
+            loader.classList.add("fadeOut");
+            setTimeout(() => loader.style.display = "none", 800);
+        });
+
+        // Botão voltar ao topo
+        const backToTop = document.getElementById("backToTop");
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 300) backToTop.classList.add("show");
+            else backToTop.classList.remove("show");
+        });
+        backToTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+
+        // Modo noturno com localStorage
+        const darkModeBtn = document.getElementById('darkModeToggle');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        function setDarkMode(on) {
+            if(on) document.body.classList.add('dark-mode');
+            else document.body.classList.remove('dark-mode');
+            localStorage.setItem('darkMode', on ? 'on' : 'off');
+            darkModeBtn.innerHTML = on ? '☀️' : '🌙';
+        }
+        (function() {
+            const saved = localStorage.getItem('darkMode');
+            if(saved === 'on' || (saved === null && prefersDark)) setDarkMode(true);
+            else setDarkMode(false);
+        })();
+        darkModeBtn.addEventListener('click', () => {
+            setDarkMode(!document.body.classList.contains('dark-mode'));
+        });
+    </script>
+</body>
+</html>

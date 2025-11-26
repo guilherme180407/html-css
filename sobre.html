@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Professor não vai ver isso</title>
+  <link rel="stylesheet" href="sobre.css">
+</head>
+<body>
+ <!-- Botão Modo Noturno -->
+<button id="darkModeToggle" title="Alternar modo noturno">🌙</button>
+<!-- NOVO: Loader de carregamento -->
+<div id="loader">
+  <img src="SPADRE.jpg.png" alt="Logo SPADRE" class="loader-img">
+</div>
+<!-- FIM DO LOADER -->
+
+<!-- NOVO: Botão voltar ao topo -->
+<button id="backToTop" title="Voltar ao topo">▲</button>
+<!-- FIM DO BOTÃO -->
+
+    <header class="topo">
+  <div class="container-header">
+    <div class="perfil">
+      <img src="SPADRE.jpg.png" alt="Foto da equipe" class="foto-perfil">
+      <div class="nomes">
+        <h1>SPADRE</h1>
+        <p>Guilherme e Rafael</p>
+      </div>
+    </div>
+
+    <nav class="menu">
+      <a href="index.html">Página Inicial</a>
+      <a href="sobre.html" class="ativo">Sobre o Site</a>
+      <a href="projetos.html">Projetos</a>
+      <a href="turma.html">Turma</a>
+      <a href="postagens.html">Postagens</a>
+      <a href="jogos.html">Jogos</a>
+      <a href="feira.html">E'Sustentar</a>
+    </nav>
+  </div>
+</header>
+  <main class="conteudo">
+
+    <!-- SEÇÃO SOBRE MIM -->
+    <section class="sobre">
+      <div class="texto">
+        <h2>Sobre nós</h2>
+        <h3>Guilherme e Rafael</h3>
+        <p>
+          Somos alunos do 3° Ano do Colégio Estadual Cívico-Militar Cândido Portinari e estamos promovendo esse site em companhia para passar conhecimento sobre a sustentabilidade na educação. Essa atividade nos gerou conhecimento ao desenvolvimento web, programação e principalmente ao assunto do nosso site.
+      </div>
+      <div class="foto">
+        <img src="SPADRE.jpg.png" alt="Foto de Guilherme Spada">
+      </div>
+    </section>
+    
+    <!-- SEÇÃO SOBRE O PROJETO -->
+    <section class="projeto">
+      <div class="imagem-projeto">
+        <img src="escola.jpeg" alt="Imagem da escola Cândido Portinari">
+      </div>
+      <div class="texto-projeto">
+        <h2>Sobre nosso projeto</h2>
+        <p>
+          Nosso projeto buscou aproximar o leitor aos projetos sociais existentes no Brasil para o desenvolvimento sustentável na educação, 
+          Contendo postagens com pontos chaves e uma aba totalmente a serviço de apresentar os projetos públicos e de iniciativas privadas que abordam o tema.
+          Esse projeto foi desenvolvido pelos alunos para a matéria de Matemática II, onde o professor
+          José Ademir deu o desafio de criar um site onde o tema era livre, mas o foco seria a sustentabilidade
+          na educação. O objetivo foi avaliar nosso entendimento de criação de site, design, desenvolvimento web e produção de
+          postagens voltadas para o tema.
+          O projeto busca mostrar que a tecnologia e a educação podem caminhar juntas a favor da
+          sustentabilidade e do aprendizado prático.  
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2025 Guilherme Spada e Rafael Zambonin | Todos os direitos reservados</p>
+  </footer>
+  <!-- NOVO: Script leve para funcionamento do loader e do botão -->
+<script>
+  // Loader desaparece após 1,5s simulando carregamento
+  window.addEventListener("load", () => {
+    const loader = document.getElementById("loader");
+    loader.classList.add("fadeOut");
+    setTimeout(() => loader.style.display = "none", 800);
+  });
+
+  // Botão voltar ao topo
+  const backToTop = document.getElementById("backToTop");
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) backToTop.classList.add("show");
+    else backToTop.classList.remove("show");
+  });
+  backToTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+</script>
+<!-- FIM DO SCRIPT -->
+ <script>
+const darkModeToggle = document.getElementById('darkModeToggle');
+let isDragging = false;
+let offsetX, offsetY;
+let moved = false;
+
+// Salva preferência no localStorage
+function setDarkMode(on) {
+  if(on) document.body.classList.add('dark-mode');
+  else document.body.classList.remove('dark-mode');
+  localStorage.setItem('darkMode', on ? 'on' : 'off');
+  darkModeToggle.innerHTML = on ? '☀️' : '🌙';
+}
+
+// Carrega preferência ao abrir a página
+(function() {
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const saved = localStorage.getItem('darkMode');
+  if(saved === 'on' || (saved === null && prefersDark)) setDarkMode(true);
+  else setDarkMode(false);
+})();
+
+// Clique e arraste
+darkModeToggle.addEventListener('mousedown', function(e) {
+  isDragging = true;
+  moved = false;
+  offsetX = e.clientX - darkModeToggle.getBoundingClientRect().left;
+  offsetY = e.clientY - darkModeToggle.getBoundingClientRect().top;
+  darkModeToggle.style.position = 'absolute';
+  darkModeToggle.style.zIndex = 9999;
+  document.body.appendChild(darkModeToggle);
+});
+
+document.addEventListener('mousemove', function(e) {
+  if (isDragging) {
+    darkModeToggle.style.left = (e.clientX - offsetX) + 'px';
+    darkModeToggle.style.top = (e.clientY - offsetY) + 'px';
+    moved = true;
+  }
+});
+
+document.addEventListener('mouseup', function(e) {
+  if (isDragging) {
+    isDragging = false;
+    // Só ativa modo noturno se NÃO houve movimento
+    if (!moved) {
+      setDarkMode(!document.body.classList.contains('dark-mode'));
+    }
+  }
+});
+</script>
+</body>
+</html>
